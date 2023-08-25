@@ -41,9 +41,7 @@ class CategoryApter( val context: Context, val categories:List<Category>) :BaseA
 
         if (convertView == null) {
             binding = ListItemBinding.inflate(inflater, parent, false)// for binding
-
-holder= ViewHolder(binding)
-
+             holder= ViewHolder(binding)
             binding.root.tag = holder
             println("First time")
         } else {
@@ -57,8 +55,8 @@ holder= ViewHolder(binding)
 
 
        // binding.categoryImage.setImageResource(resourcedId)
-val item = Category(category.title,category.title)
-        holder.bind(item,resourcedId)
+//val item = Category(category.title,category.title)
+        holder.bind(category,resourcedId)
         return binding.root
     }
 private class ViewHolder(val binding: ListItemBinding){
