@@ -7,19 +7,23 @@ import com.example.coderswag.R
 import com.example.coderswag.model.Category
 import com.example.coderswag.serices.DataService
 import android.widget.ListView
+import com.example.coderswag.Adapter.CategoryApter
 import com.example.coderswag.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
-    var fruits = arrayOf("Apple","Pindsf","sgvdfg","swertewrgfg")
-    private lateinit var adapter :ArrayAdapter<Category>
+   // var fruits = arrayOf("Apple","Pindsf","sgvdfg","swertewrgfg")
+    //private lateinit var adapter :ArrayAdapter<Category>
+    private lateinit var adapter :CategoryApter
+
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+       // setContentView(R.layout.activity_main)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
      // adapter =  new ArrayAdapter<String>(this,  android.R.layout.activity_list_item, fruits)
         try {
-            adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, DataService.categories)
+            //adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, DataService.categories)
+           adapter=CategoryApter(this,DataService.categories)
             binding.categoryListView.adapter = adapter
         }
         catch (e:Exception){
