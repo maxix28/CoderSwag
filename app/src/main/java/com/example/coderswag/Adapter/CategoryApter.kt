@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.example.coderswag.R
@@ -13,18 +15,11 @@ import com.example.coderswag.databinding.ListItemBinding
 
 
 class CategoryApter( val context: Context, val categories:List<Category>) :BaseAdapter(){
-   ///private lateinit var binding: ListItemBinding
-//    binding = ListItemBinding.inflate(layoutInflater)
-//    val view = binding.root
-//    setContentView(view)
-//    private val binding: ListItemBinding = ListItemBinding.inflate(
-//        LayoutInflater.from(context),
-//        this,
-//        true
-//    )
-   init{
-   // binding = ListItemBinding.inflate(LayoutInflater.from(context), this, true)
-   }
+
+  private lateinit var  holder:ViewHolder;
+
+
+
     override fun getCount(): Int {
        return categories.count()
 
@@ -41,25 +36,37 @@ class CategoryApter( val context: Context, val categories:List<Category>) :BaseA
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val binding: ListItemBinding
         val inflater = LayoutInflater.from(context)
-        val categoryView:View
+
         val category=categories[position]
-        categoryView = LayoutInflater.from(context).inflate(R.layout.list_item,null)
+
         if (convertView == null) {
-            binding = ListItemBinding.inflate(inflater, parent, false)
-            binding.root.tag = binding
+            binding = ListItemBinding.inflate(inflater, parent, false)// for binding
+
+holder= ViewHolder(binding)
+
+            binding.root.tag = holder
+            println("First time")
         } else {
-            binding = convertView.tag as ListItemBinding
+            holder= convertView.tag as ViewHolder
+            binding = holder.binding
+            println("AGAINE")
+
         }
-        binding.categoryText.text=category.title
-        val resourcedId= context.resources.getIdentifier(category.image,"drawable",context.packageName)
-        //categoryView.
-        //binding = ListItemBinding.inflate(LayoutInflater.from(context), this, true)
-println(resourcedId)
-        binding.categoryImage.setImageResource(resourcedId)
-        //val text= findViewById(R.id.categoryText)
-       // return categoryView
+       // binding.categoryText.text=category.title //change text
+        val resourcedId= context.resources.getIdentifier(category.image,"drawable",context.packageName)//change image
+
+
+       // binding.categoryImage.setImageResource(resourcedId)
+val item = Category(category.title,category.title)
+        holder.bind(item,resourcedId)
         return binding.root
     }
-
+private class ViewHolder(val binding: ListItemBinding){
+    fun bind(item: Category, id : Int) {
+        binding.categoryText.text = item.title
+        binding.categoryImage.setImageResource(id)
+       // binding.categoryImage.text = item.image
+    }
+}
 
 }
