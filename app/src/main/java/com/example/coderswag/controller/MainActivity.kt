@@ -9,6 +9,7 @@ import com.example.coderswag.R
 import com.example.coderswag.model.Category
 import com.example.coderswag.serices.DataService
 import android.widget.ListView
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.coderswag.Adapter.CategoryApter
 import com.example.coderswag.Adapter.CategoryRecycleAdapter
@@ -35,7 +36,7 @@ class MainActivity : AppCompatActivity() {
                startActivity(productIntent)
            }
             binding.categoryListView.adapter = adapter
-            val layoutmanager= LinearLayoutManager(this)
+            val layoutmanager= GridLayoutManager(this,1)// LinearLayoutManager(this)
             binding.categoryListView.layoutManager=layoutmanager
            binding.categoryListView.setHasFixedSize(true)
         }

@@ -11,8 +11,7 @@ import com.example.coderswag.model.Category
 
 class CategoryRecycleAdapter(val context: Context, val categories : List<Category> , val itemClick:(Category)->Unit) : RecyclerView.Adapter<CategoryRecycleAdapter.Holder>() {
 
-    inner class Holder(private val binding: ListItemBinding, val itemClick:(Category)->Unit) :
-        RecyclerView.ViewHolder(binding.root) {
+    inner class Holder(private val binding: ListItemBinding, val itemClick:(Category)->Unit) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(category: Category) {
             binding.categoryText.text = category.title
