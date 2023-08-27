@@ -50,12 +50,10 @@ class CategoryApter( val context: Context, val categories:List<Category>) :BaseA
             println("AGAINE")
 
         }
-       // binding.categoryText.text=category.title //change text
+
         val resourcedId= context.resources.getIdentifier(category.image,"drawable",context.packageName)//change image
 
 
-       // binding.categoryImage.setImageResource(resourcedId)
-//val item = Category(category.title,category.title)
         holder.bind(category,resourcedId)
         return binding.root
     }
