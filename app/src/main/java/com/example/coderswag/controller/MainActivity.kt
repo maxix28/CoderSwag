@@ -1,5 +1,6 @@
 package com.example.coderswag.controller
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
@@ -11,6 +12,7 @@ import android.widget.ListView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.coderswag.Adapter.CategoryApter
 import com.example.coderswag.Adapter.CategoryRecycleAdapter
+import com.example.coderswag.Utilities.Extra_Category
 import com.example.coderswag.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
    // var fruits = arrayOf("Apple","Pindsf","sgvdfg","swertewrgfg")
@@ -26,7 +28,12 @@ class MainActivity : AppCompatActivity() {
      // adapter =  new ArrayAdapter<String>(this,  android.R.layout.activity_list_item, fruits)
         try {
             //adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, DataService.categories)
-           adapter=CategoryRecycleAdapter(this,DataService.categories)
+           adapter=CategoryRecycleAdapter(this,DataService.categories){
+               category -> println(category.title)
+               val productIntent = Intent(this,ProductsActivity::class.java)
+              productIntent.putExtra(Extra_Category,category.title)
+               startActivity(productIntent)
+           }
             binding.categoryListView.adapter = adapter
             val layoutmanager= LinearLayoutManager(this)
             binding.categoryListView.layoutManager=layoutmanager

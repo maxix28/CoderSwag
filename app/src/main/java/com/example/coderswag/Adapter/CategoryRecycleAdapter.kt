@@ -9,9 +9,9 @@ import com.example.coderswag.databinding.ListItemBinding
 import com.example.coderswag.model.Category
 
 
-class CategoryRecycleAdapter(val context: Context, val categories : List<Category>) : RecyclerView.Adapter<CategoryRecycleAdapter.Holder>() {
+class CategoryRecycleAdapter(val context: Context, val categories : List<Category> , val itemClick:(Category)->Unit) : RecyclerView.Adapter<CategoryRecycleAdapter.Holder>() {
 
-    inner class Holder(private val binding: ListItemBinding) :
+    inner class Holder(private val binding: ListItemBinding, val itemClick:(Category)->Unit) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(category: Category) {
@@ -19,7 +19,7 @@ class CategoryRecycleAdapter(val context: Context, val categories : List<Categor
             val resourcedId= context.resources.getIdentifier(category.image,"drawable",context.packageName)//change image
 
             binding.categoryImage.setImageResource(resourcedId)
-
+binding.root.setOnClickListener { itemClick(category) }
 
         }
     }
@@ -29,7 +29,7 @@ class CategoryRecycleAdapter(val context: Context, val categories : List<Categor
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ListItemBinding.inflate(inflater, parent, false)
-        return Holder(binding)
+        return Holder(binding,itemClick)
 
     }
 
