@@ -1,6 +1,7 @@
 package com.example.coderswag.controller
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -26,7 +27,11 @@ product= intent.getParcelableExtra(Extra_Prod)!!
         binding.ToBusketBTN.setBackgroundColor(3328)
         binding.button.setOnClickListener {
             println("BUY")
-            Toast.makeText(this, "Bought ${product.title}", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this, "Bought ${product.title}", Toast.LENGTH_SHORT).show()
+            val Buy_Intent= Intent(this,User_Buy::class.java)
+            startActivity(Buy_Intent)
+
+
 
         }
         binding.ToBusketBTN.setOnClickListener {
@@ -40,10 +45,15 @@ product= intent.getParcelableExtra(Extra_Prod)!!
             }
         }
     }
+
+    fun OnBuy(view: View){
+        println("BUY")
+        val Buy_Intent= Intent(this,User_Buy::class.java)
+        startActivity(Buy_Intent)
+    }
 }
 fun showToast(context: Context) {
     Toast.makeText(context, "Choose your skill", Toast.LENGTH_SHORT).show()
 }
-fun OnBuy(view: View){
-println("BUY")
-}
+
+
