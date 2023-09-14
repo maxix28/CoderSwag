@@ -29,6 +29,7 @@ product= intent.getParcelableExtra(Extra_Prod)!!
             println("BUY")
             //Toast.makeText(this, "Bought ${product.title}", Toast.LENGTH_SHORT).show()
             val Buy_Intent= Intent(this,User_Buy::class.java)
+           Buy_Intent.putExtra(Extra_Prod,product)
             startActivity(Buy_Intent)
 
 

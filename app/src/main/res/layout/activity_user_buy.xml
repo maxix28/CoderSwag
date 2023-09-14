@@ -17,7 +17,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.432"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/productIMG" />
 
     <EditText
         android:id="@+id/client_second_name"
@@ -33,7 +33,7 @@
         app:layout_constraintTop_toBottomOf="@+id/client_name" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/productIMG"
         android:layout_width="139dp"
         android:layout_height="125dp"
         android:layout_marginTop="24dp"
@@ -44,13 +44,14 @@
         app:srcCompat="@drawable/hat1" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/product_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="24dp"
+        android:fontFamily="@font/archivo_black"
         android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toEndOf="@+id/productIMG"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
@@ -60,28 +61,28 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="1"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-        app:layout_constraintStart_toEndOf="@+id/imageView3"
-        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        app:layout_constraintBottom_toBottomOf="@+id/minus"
+        app:layout_constraintStart_toEndOf="@+id/minus"
+        app:layout_constraintTop_toTopOf="@+id/minus"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/plus"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintBottom_toBottomOf="@+id/minus"
         app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName3"
-        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        app:layout_constraintTop_toTopOf="@+id/minus"
         app:srcCompat="@android:drawable/btn_plus" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/minus"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintStart_toEndOf="@+id/productIMG"
+        app:layout_constraintTop_toBottomOf="@+id/product_name"
         app:srcCompat="@android:drawable/btn_minus" />
 
     <TextView
@@ -93,7 +94,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.474"
-        app:layout_constraintStart_toEndOf="@+id/imageView4" />
+        app:layout_constraintStart_toEndOf="@+id/plus" />
 
     <Button
         android:id="@+id/buy_nowBTN"
